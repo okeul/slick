@@ -475,6 +475,8 @@
                         .attr('aria-disabled', 'true');
                 }
 
+                $(_.$slider).addClass('slick-has-arrows');
+
             } else {
 
                 _.$prevArrow.add( _.$nextArrow )
@@ -968,6 +970,7 @@
 
         _.$slider.removeClass('slick-slider');
         _.$slider.removeClass('slick-initialized');
+        _.$slider.removeClass('slick-has-arrows');
         _.$slider.removeClass('slick-dotted');
         _.$slider.removeClass('slick-accessible');
 
