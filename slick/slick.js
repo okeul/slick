@@ -7,10 +7,10 @@
                    |__/
 
  Version: 1.9.0
-  Author: Ken Wheeler
+  Author: Ken Wheeler / Clever Age
  Website: http://kenwheeler.github.io
     Docs: http://kenwheeler.github.io/slick
-    Repo: http://github.com/kenwheeler/slick
+    Repo: http://github.com/okeul/slick / http://github.com/oilvier/slick
   Issues: http://github.com/kenwheeler/slick/issues
 
  */
