@@ -79,6 +79,7 @@
                 pauseOnDotsHover: true,
                 pauseLabel: 'Stop animation',
                 playLabel: 'Start animation',
+                pauseButton: '<button class="slick-pause" type="button"><span class="slick-pause-label">Stop animation</span></button>',
                 respondTo: 'window',
                 responsive: null,
                 rows: 1,
@@ -116,6 +117,7 @@
                 $slideControls: null,
                 $nextArrow: null,
                 $prevArrow: null,
+                $pauseButton: null,
                 scrolling: false,
                 slideCount: null,
                 slideWidth: null,
@@ -493,13 +495,13 @@
 
         if (_.options.accessibility && _.options.autoplay) {
 
-            _.$pauseButton = $('<button />', {
-                'class': 'slick-pause slick-control slick--playing',
-                'data-action': 'pause',
-                'html': '<span class="slick-visually-hidden">' + _.options.pauseLabel + '</span>'
-            });
+            _.$pauseButton = $(_.options.pauseButton).addClass('slick-pause slick-control slick--playing').attr('data-action', 'pause');
 
-            _.$pauseButton.prependTo(_.$slider);
+            _.$pauseButton.find('.slick-pause-label').text(_.options.pauseLabel);
+
+            if(_.slideCount > _.options.slidesToShow) {
+              _.$pauseButton.prependTo(_.$slider);
+            }
 
         }
 
@@ -1491,7 +1493,7 @@
                 _.$pauseButton
                     .off('click.slick')
                     .on('click.slick', function(e) {
-                        switch ($(e.target).attr('data-action')) {
+                        switch ($(e.target).closest('[data-action]').attr('data-action')) {
                             case 'pause':
                                 _.slickPause();
                             break;
@@ -1794,7 +1796,7 @@
         if (_.options.accessibility && _.options.autoplay) {
             _.$pauseButton.attr('data-action', 'play')
                 .toggleClass('slick--playing slick--paused')
-                .find('.slick-visually-hidden')
+                .find('.slick-pause-label')
                 .html(_.options.playLabel);
         }
 
@@ -1813,7 +1815,7 @@
         if (_.options.accessibility && _.options.autoplay) {
             _.$pauseButton.attr('data-action', 'pause')
                 .toggleClass('slick--playing slick--paused')
-                .find('.slick-visually-hidden')
+                .find('.slick-pause-label')
                 .html(_.options.pauseLabel);
         }
 
