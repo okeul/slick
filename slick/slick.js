@@ -1589,7 +1589,7 @@
 
         $(window).on('resize.slick.slick-' + _.instanceUid, $.proxy(_.resize, _));
 
-        $('[draggable!=true]', _.$slideTrack).on('dragstart', _.preventDefault);
+        _.$slideTrack.on('dragstart', '[draggable!=true]', _.preventDefault);
 
         $(window).on('load.slick.slick-' + _.instanceUid, _.setPosition);
         $(_.setPosition);
